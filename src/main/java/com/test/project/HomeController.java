@@ -8,8 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import pojo.HomePojo;
 
 /**
  * Handles requests for the application home page.
@@ -33,9 +36,18 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		HomePojo homePojo = new HomePojo();
+		model.addAttribute("admin", homePojo);
+		
 		return "home";
 	}
 	
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String adminSave(@ModelAttribute("admin")HomePojo adminForm, Model model) {
+		model.addAttribute("adminForm", adminForm);
+		
+		return "home";
+	}
 	
 	@RequestMapping("/about")
 	public String showAbout() {
