@@ -1,4 +1,4 @@
-package com.test.project;
+package com.test.project.control;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pojo.HomePojo;
+import com.test.project.pojo.HomePojo;
 
 /**
  * Handles requests for the application home page.
