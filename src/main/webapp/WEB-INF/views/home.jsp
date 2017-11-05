@@ -11,7 +11,7 @@
 	Hello world!  OMG!!
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${formattedDate}. </P>
 <br>
 <a href='<c:url value="/about"/>'>About</a>
 <br>

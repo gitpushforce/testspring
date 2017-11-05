@@ -34,7 +34,7 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("formattedDate", formattedDate );
 		
 		HomePojo homePojo = new HomePojo();
 		model.addAttribute("admin", homePojo);
