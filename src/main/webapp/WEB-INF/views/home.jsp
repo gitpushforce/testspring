@@ -35,7 +35,7 @@
 
 </sf:form>
 
-<c:out value = "${adminForm.nombre}"/><br>
-<c:out value = "${adminForm.cargo}"/>
+<%-- <c:out value = "${adminForm.nombre}"/><br>
+<c:out value = "${adminForm.cargo}"/> --%>
 </body>
 </html>

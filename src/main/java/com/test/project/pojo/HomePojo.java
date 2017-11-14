@@ -8,6 +8,11 @@ public class HomePojo {
 	private String nombre;
 	private String cargo;
 	private Timestamp fechaCreacion;
+	
+	public HomePojo() {
+		
+	}
+	
 	public int getAdminnum() {
 		return adminnum;
 	}
