@@ -5,11 +5,37 @@
 <html>
 <head>
 	<title>Home</title>
+	 <link href="<c:url value="/resources/css/bootstrap-grid.css" />" rel="stylesheet">
+	 <link href="<c:url value="/resources/css/bootstrap-reboot.css" />" rel="stylesheet">
+	 <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
 </head>
 <body>
 <h1>
 	Hello world!  OMG!!
 </h1>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+
+<br>
+<br>
+
 
 <P>  The time on the server is ${formattedDate}. </P>
 <br>
@@ -38,4 +64,6 @@
 <%-- <c:out value = "${adminForm.nombre}"/><br>
 <c:out value = "${adminForm.cargo}"/> --%>
 </body>
+
+<script src="<c:url value="/resources/js/bootstrap.js" />"></script>
 </html>
