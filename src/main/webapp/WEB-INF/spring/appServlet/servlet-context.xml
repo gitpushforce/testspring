@@ -21,7 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.test.project" />
+	<context:component-scan base-package="com.test.project.control"></context:component-scan>
+	<context:component-scan base-package="com.test.project.dao"></context:component-scan>
+	
 	
 	
 	
