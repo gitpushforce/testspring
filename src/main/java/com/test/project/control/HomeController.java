@@ -43,7 +43,7 @@ public class HomeController {
 		HomePojo homePojo = new HomePojo();
 		model.addAttribute("admin", homePojo);
 		
-		return "home";
+		return "test";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
