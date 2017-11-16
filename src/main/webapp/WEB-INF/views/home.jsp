@@ -8,8 +8,11 @@
 	 <link href="<c:url value="/resources/css/bootstrap-grid.css" />" rel="stylesheet">
 	 <link href="<c:url value="/resources/css/bootstrap-reboot.css" />" rel="stylesheet">
 	 <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
+	 <link href="<c:url value="/resources/css/test.css" />" rel="stylesheet" type="text/css">
 </head>
 <body>
+
+<i class="fa fa-heart" aria-hidden="true"></i>
 <h1>
 	Hello world!  OMG!!
 </h1>
