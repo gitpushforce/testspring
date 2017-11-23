@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+
 
 <html>
 <head>
@@ -119,7 +119,10 @@
                 
                 <br>
 				<sf:form action="${pageContext.request.contextPath}/save" method="post" commandName="admin">
+					
 					<table>
+					<%-- <sf:input path="adminnum" type="hidden"/> 
+					<sf:input path="fechaCreacion" type="hidden"/> --%>
 						<tr>
 							<td>Nombre</td>
 							<td> <sf:input path="nombre" type="text"/> </td>

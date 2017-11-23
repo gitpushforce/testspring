@@ -172,7 +172,7 @@ div#top_ranking {
 div#top_ranking h2 {
     font-size: 18px;
     font-weight: bold;
-    background: url(images/popular_icon.png) no-repeat;
+    background: url(../img/test/popular_icon.png) no-repeat;
     padding-left: 37px;
     border-bottom: 1px solid #dcdddf;
     line-height: 30px;
@@ -268,7 +268,7 @@ div#top_category {
 div#top_category h3 {
     font-size: 18px;
     font-weight: bold;
-    background: url(images/category_icon.png) no-repeat left 8px;
+    background: url(../img/test/category_icon.png) no-repeat left 8px;
     padding-left: 25px;
     border-bottom: 1px dotted #dcdddf;
     margin-bottom: 10px;
@@ -304,7 +304,7 @@ div#top_right {
 div#top_right h3 {
     font-size: 22px;
     font-weight: bold;
-    background: url(images/new_icon.png) no-repeat left 5px;
+    background: url(../img/test/new_icon.png) no-repeat left 5px;
     padding-left: 30px;
 }
 
@@ -359,14 +359,14 @@ div#top_right h4 a {
 span.new_date {
     font-size: 12px;
     color: #dcdddf;
-    background: url(images/new_date.png) no-repeat left 2px;
+    background: url(../img/test//new_date.png) no-repeat left 2px;
     padding-left: 18px;
 }
 
 span.new_tag {
     font-size: 12px;
     color: #dcdddf;
-    background: url(images/tag.png) no-repeat left 2px;
+    background: url(../img/test/tag.png) no-repeat left 2px;
     padding-left: 18px;
     margin-left: 15px;
 }

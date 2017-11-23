@@ -3,6 +3,7 @@ package com.test.project.service;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,14 @@ public class HomeService {
 		pojo.setFechaCreacion(new Timestamp(new Date().getTime()));
 		boolean bool = homeDao.save(pojo);
 		return bool;
+	}
+	
+	public List<HomePojo> findAll() {
+		return homeDao.findAll();
+	}
+	
+	public HomePojo findById(int id) {
+		return homeDao.findById(id);
 	}
 	
 }

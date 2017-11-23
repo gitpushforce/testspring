@@ -1,14 +1,20 @@
 package com.test.project.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.test.project.pojo.AdminRowMapper;
 import com.test.project.pojo.HomePojo;
@@ -17,9 +23,9 @@ class DaoImpl implements HomeDao{
 	
 	private NamedParameterJdbcTemplate jdbcTemplate;
 		
-		@Autowired
-		private void setDataSource(DataSource dataSource){
-			this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	@Autowired
+	private void setDataSource(DataSource dataSource){
+		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 	}
 
 	@Override
@@ -32,8 +38,21 @@ class DaoImpl implements HomeDao{
 
 	@Override
 	public List<HomePojo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("select * from Admin", new RowMapper<HomePojo>() {
+
+			@Override
+			public HomePojo mapRow(ResultSet rs, int rowNum) throws SQLException {
+				HomePojo homePojo = new HomePojo();
+				
+				homePojo.setAdminnum(rs.getInt("idAd"));
+				homePojo.setCargo(rs.getString("cargo"));
+				homePojo.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
+				homePojo.setNombre(rs.getString("nombre"));
+				
+				return homePojo;
+			}
+		});
+
 	}
 
 	@Override

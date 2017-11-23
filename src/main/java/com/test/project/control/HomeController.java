@@ -1,5 +1,6 @@
 package com.test.project.control;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -47,22 +49,39 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String adminSave(@ModelAttribute("admin")HomePojo pojoForm, Model model, RedirectAttributes ra) {
+	public String adminSave(@ModelAttribute("admin")HomePojo pojoForm,
+			Model model, RedirectAttributes ra) {
 		//model.addAttribute("pojoForm", pojoForm);
 		
 		if (homeService.save(pojoForm)) {
+			List<HomePojo> all = homeService.findAll();
 			ra.addFlashAttribute("result", "todo correcto");
+			ra.addFlashAttribute("records", all);
 		} else {
 			ra.addFlashAttribute("result", "error al realizar los cambios");
 		}
-		
 		return "redirect:/about";
 	}
 	
 	@RequestMapping(value = "/about")
-	public String showAbout(@ModelAttribute("result")String resultado, Model model) {
+	public String showAbout(@ModelAttribute("result")String resultado,
+			@ModelAttribute("records")List<HomePojo> all, Model model) {
+		
 		model.addAttribute("result", resultado);
+		model.addAttribute("records", all);
 		return "about";
+	}
+	
+	@RequestMapping("/about/{adminnum}/update")
+	public String showUpdate(Model model, @PathVariable("adminnum") int id) {
+		
+		HomePojo byIdResult = homeService.findById(id);
+		
+		model.addAttribute("admin", byIdResult);
+		
+		return "test";
+		
+		
 	}
 	
 }
