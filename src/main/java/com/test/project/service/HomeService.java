@@ -30,5 +30,17 @@ public class HomeService {
 	public HomePojo findById(int id) {
 		return homeDao.findById(id);
 	}
+
+	public boolean saveOrUpdate(HomePojo pojoForm) {
+		if(pojoForm.getAdminnum() == 0) {
+			return homeDao.save(pojoForm);
+		} else {
+			return homeDao.update(pojoForm);
+		}
+	}
+	
+	public boolean delete(int idAd) {
+		return homeDao.delete(idAd);
+	}
 	
 }

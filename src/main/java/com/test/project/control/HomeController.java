@@ -53,7 +53,7 @@ public class HomeController {
 			Model model, RedirectAttributes ra) {
 		//model.addAttribute("pojoForm", pojoForm);
 		
-		if (homeService.save(pojoForm)) {
+		if (homeService.saveOrUpdate(pojoForm)) {
 			List<HomePojo> all = homeService.findAll();
 			ra.addFlashAttribute("result", "todo correcto");
 			ra.addFlashAttribute("records", all);
@@ -80,8 +80,18 @@ public class HomeController {
 		model.addAttribute("admin", byIdResult);
 		
 		return "test";
+	}
+	
+	@RequestMapping("/about/{adminnum}/delete")
+	public String delete(Model model, @PathVariable("adminnum") int id) {
+		String resultado = ""; 
+		if (homeService.delete(id)) {
+			model.addAttribute("result", "borrado correctamente");
+		} else {
+			model.addAttribute("result", "no se pudo borrar");
+		}
 		
-		
+		return "about";
 	}
 	
 }

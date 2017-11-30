@@ -15,7 +15,9 @@
 
 <c:forEach items="${records}" var="rec"> 
 	<c:out value="${rec.nombre}" />
-	<a href='<c:url value="/about/${rec.adminnum}/update"/>'>Update</a><br>
+	<a href='<c:url value="/about/${rec.adminnum}/update"/>'>Update</a>
+	<a class="confirm" href='<c:url value="/about/${rec.adminnum}/delete" />'>Delete</a>
+	<br/>
 </c:forEach>
 
 </body>

@@ -69,14 +69,13 @@ class DaoImpl implements HomeDao{
 
 	@Override
 	public boolean update(HomePojo pojo) {
-		// TODO Auto-generated method stub
-		return false;
+		return jdbcTemplate.update("update Admin set nombre=:nombre, cargo=:cargo, fechaCreacion=:fechaCreacion where idAd=:idAd", 
+				new BeanPropertySqlParameterSource(pojo)) == 1;
 	}
 
 	@Override
 	public boolean delete(int idAd) {
-		// TODO Auto-generated method stub
-		return false;
+		return jdbcTemplate.update("delete from Admin where idAd=:idAd", new MapSqlParameterSource("idAd", idAd)) == 1;
 	}
 
 	@Override
