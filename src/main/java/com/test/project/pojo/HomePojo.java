@@ -3,6 +3,14 @@ package com.test.project.pojo;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="Admin")
 public class HomePojo {
 	private int adminnum;
 	private String nombre;
@@ -13,6 +21,8 @@ public class HomePojo {
 		
 	}
 	
+	@Id
+	@GeneratedValue
 	public int getAdminnum() {
 		return adminnum;
 	}
