@@ -6,59 +6,40 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSourceUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.test.project.pojo.AdminRowMapper;
 import com.test.project.pojo.HomePojo;
-@Component("homeDao")
+
+@Transactional
+@Repository
 class DaoImpl implements HomeDao{
 	
-	private NamedParameterJdbcTemplate jdbcTemplate;
-		
 	@Autowired
-	private void setDataSource(DataSource dataSource){
-		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	private SessionFactory sessionFactory;
+	
+	public Session getSession() {
+		return sessionFactory.getCurrentSession();
 	}
-
+	
 	@Override
-	public boolean save(HomePojo pojo) {
-		BeanPropertySqlParameterSource paramMap = new BeanPropertySqlParameterSource(pojo);
-		
-		return jdbcTemplate.
-				update("insert into Admin (nombre, cargo, fechaCreacion) values (:nombre, :cargo, :fechaCreacion)", paramMap) == 1;
+	public void save(HomePojo pojo) {
+		getSession().save(pojo);
 	}
 
 	@Override
 	public List<HomePojo> findAll() {
-		return jdbcTemplate.query("select * from Admin", new RowMapper<HomePojo>() {
-
-			@Override
-			public HomePojo mapRow(ResultSet rs, int rowNum) throws SQLException {
-				HomePojo homePojo = new HomePojo();
-				
-				homePojo.setAdminnum(rs.getInt("idAd"));
-				homePojo.setCargo(rs.getString("cargo"));
-				homePojo.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
-				homePojo.setNombre(rs.getString("nombre"));
-				
-				return homePojo;
-			}
-		});
-
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public HomePojo findById(int id) {
-		return jdbcTemplate.queryForObject("select * from Admin where idAd=:idAd", 
-				new MapSqlParameterSource("idAd", id), new AdminRowMapper());
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -68,20 +49,13 @@ class DaoImpl implements HomeDao{
 	}
 
 	@Override
-	public boolean update(HomePojo pojo) {
-		return jdbcTemplate.update("update Admin set nombre=:nombre, cargo=:cargo, fechaCreacion=:fechaCreacion where idAd=:idAd", 
-				new BeanPropertySqlParameterSource(pojo)) == 1;
-	}
-
-	@Override
-	public boolean delete(int idAd) {
-		return jdbcTemplate.update("delete from Admin where idAd=:idAd", new MapSqlParameterSource("idAd", idAd)) == 1;
-	}
-
-	@Override
-	public int[] saveAll(List<HomePojo> admins) {
+	public void update(HomePojo pojo) {
 		// TODO Auto-generated method stub
-		return null;
+	}
+
+	@Override
+	public void delete(int idAd) {
+		// TODO Auto-generated method stub
 	}
 
 }

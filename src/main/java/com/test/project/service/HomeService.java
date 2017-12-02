@@ -17,10 +17,9 @@ public class HomeService {
 	@Autowired
 	private HomeDao homeDao;
 	
-	public boolean save(HomePojo pojo) {
+	public void save(HomePojo pojo) {
 		pojo.setFechaCreacion(new Timestamp(new Date().getTime()));
-		boolean bool = homeDao.save(pojo);
-		return bool;
+		homeDao.save(pojo);
 	}
 	
 	public List<HomePojo> findAll() {
@@ -31,16 +30,16 @@ public class HomeService {
 		return homeDao.findById(id);
 	}
 
-	public boolean saveOrUpdate(HomePojo pojoForm) {
+	public void saveOrUpdate(HomePojo pojoForm) {
 		if(pojoForm.getAdminnum() == 0) {
-			return homeDao.save(pojoForm);
+			homeDao.save(pojoForm);
 		} else {
-			return homeDao.update(pojoForm);
+			homeDao.update(pojoForm);
 		}
 	}
 	
-	public boolean delete(int idAd) {
-		return homeDao.delete(idAd);
+	public void delete(int idAd) {
+		homeDao.delete(idAd);
 	}
 	
 }
