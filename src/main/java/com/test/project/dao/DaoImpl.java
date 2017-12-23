@@ -6,14 +6,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.test.project.pojo.HomePojo;
 
+@SuppressWarnings("unchecked")
 @Transactional
 @Repository
 class DaoImpl implements HomeDao{
@@ -30,16 +34,18 @@ class DaoImpl implements HomeDao{
 		getSession().save(pojo);
 	}
 
+
 	@Override
 	public List<HomePojo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery("from Admin");  // esto es igual a select * from Admin; en Mysql , pero esta vez estoy usando HQL
+		return query.list();
 	}
 
 	@Override
 	public HomePojo findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria crit = getSession().createCriteria(HomePojo.class);
+		crit.add(Restrictions.eq("adminnum", id));
+		return (HomePojo) crit.uniqueResult();
 	}
 
 	@Override

@@ -32,6 +32,7 @@ public class HomeService {
 
 	public void saveOrUpdate(HomePojo pojoForm) {
 		if(pojoForm.getAdminnum() == 0) {
+			pojoForm.setFechaCreacion(new Timestamp(new Date().getTime()));
 			homeDao.save(pojoForm);
 		} else {
 			homeDao.update(pojoForm);
