@@ -5,6 +5,7 @@
 	<title>About</title>
 </head>
 <body>
+<c:import url="/WEB-INF/views/menu.jsp"></c:import>
 <h1>
 	ABOUT.jsp
 </h1>

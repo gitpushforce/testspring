@@ -12,7 +12,7 @@
 	<link href="<c:url value="/resources/css/test.css" />" rel="stylesheet" type="text/css">
 	</head>
 <body>
-
+<c:import url="/WEB-INF/views/menu.jsp"></c:import>
 <header>
         <div id="header_inner">
             <h1><img src="<c:url value="/resources/img/test/logo.png"/>" alt="Design Leaker"></h1>

@@ -39,8 +39,8 @@ public class HomeService {
 		}
 	}
 	
-	public boolean delete(int idAd) {
-		return homeDao.delete(idAd);
+	public boolean delete(int adminnum) {
+		return homeDao.delete(adminnum);
 	}
 	
 }

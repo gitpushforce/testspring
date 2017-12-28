@@ -44,7 +44,7 @@ class DaoImpl implements HomeDao{
 			public HomePojo mapRow(ResultSet rs, int rowNum) throws SQLException {
 				HomePojo homePojo = new HomePojo();
 				
-				homePojo.setAdminnum(rs.getInt("idAd"));
+				homePojo.setAdminnum(rs.getInt("adminnum"));
 				homePojo.setCargo(rs.getString("cargo"));
 				homePojo.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
 				homePojo.setNombre(rs.getString("nombre"));
@@ -57,8 +57,8 @@ class DaoImpl implements HomeDao{
 
 	@Override
 	public HomePojo findById(int id) {
-		return jdbcTemplate.queryForObject("select * from Admin where idAd=:idAd", 
-				new MapSqlParameterSource("idAd", id), new AdminRowMapper());
+		return jdbcTemplate.queryForObject("select * from Admin where adminnum=:adminnum", 
+				new MapSqlParameterSource("adminnum", id), new AdminRowMapper());
 	}
 
 	@Override
@@ -69,13 +69,13 @@ class DaoImpl implements HomeDao{
 
 	@Override
 	public boolean update(HomePojo pojo) {
-		return jdbcTemplate.update("update Admin set nombre=:nombre, cargo=:cargo, fechaCreacion=:fechaCreacion where idAd=:idAd", 
+		return jdbcTemplate.update("update Admin set nombre=:nombre, cargo=:cargo, fechaCreacion=:fechaCreacion where adminnum=:adminnum", 
 				new BeanPropertySqlParameterSource(pojo)) == 1;
 	}
 
 	@Override
-	public boolean delete(int idAd) {
-		return jdbcTemplate.update("delete from Admin where idAd=:idAd", new MapSqlParameterSource("idAd", idAd)) == 1;
+	public boolean delete(int adminnum) {
+		return jdbcTemplate.update("delete from Admin where adminnum=:adminnum", new MapSqlParameterSource("adminnum", adminnum)) == 1;
 	}
 
 	@Override

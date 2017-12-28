@@ -11,7 +11,7 @@ public class AdminRowMapper implements RowMapper<HomePojo>{
 	public HomePojo mapRow(ResultSet rs, int rowNum) throws SQLException {
 		HomePojo homePojo = new HomePojo();
 		
-		homePojo.setAdminnum(rs.getInt("idAd"));
+		homePojo.setAdminnum(rs.getInt("adminnum"));
 		homePojo.setCargo(rs.getString("cargo"));
 		homePojo.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
 		homePojo.setNombre(rs.getString("nombre"));

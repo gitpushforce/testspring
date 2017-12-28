@@ -11,7 +11,7 @@
 	 <link href="<c:url value="/resources/css/test.css" />" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<c:import url="/WEB-INF/views/menu.jsp"></c:import>
 <i class="fa fa-heart" aria-hidden="true"></i>
 <h1>
 	Hello world!  OMG!!

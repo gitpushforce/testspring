@@ -94,4 +94,9 @@ public class HomeController {
 		return "about";
 	}
 	
+	@RequestMapping("/login")
+	public String login() {
+		
+		return "login";	}
+	
 }
